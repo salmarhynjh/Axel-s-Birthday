@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="bday.png" />
+  <title>happy birthday @soulatte</title>
+  <link rel="icon" href="https://i.ibb.co.com/hXZsYxZ/heart.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #a4e7f6;
+      color: #216399;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .page {
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
+
+    .page.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      color: #216399;
+      font-weight: bold;
+    }
+
+    .button {
+      background-color: #216399;
+      color: #a4e7f6;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #216399;
+    }
+
+    img {
+      max-width: 70vw;
+      max-height: 50vh;
+      margin-bottom: 20px;
+    }
+
+    .letter {
+      white-space: pre-line;
+      font-size: 1.1rem;
+      max-width: 600px;
+      text-align: left;
+      border-left: 3px solid #216399;
+      padding-left: 15px;
+      min-height: 200px;
+    }
+
+    .falling {
+      position: fixed;
+      top: -30px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .blue-heart {
+      color: #216399;
+    }
+
+    .yellow-star {
+      color: #facc15;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .button {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+
+      .letter {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page active" id="page1">
+    <img src="1.gif" alt="Cute Icon" />
+    <h1>Happy birthday <span class="highlight">sayangkuu ˶ᵔ ᵕ ᵔ˶ ♡</span></h1>
+    <p> 
+      there's more waiting... click to find out ✨</p>
+    <button class="button" onclick="goToPage(2)">tap ‹𝟹</button>
+  </div>
+
+  <div class="page" id="page2">
+    <img src="write.gif" alt="Envelope" />
+    <p>i made something for your birthday, read it slowlyyy <3 </p>
+    <button class="button" onclick="goToPage(3)">open it ‹𝟹</button>
+  </div>
+
+<div class="page" id="page3">
+    <img src="3.png" alt="Cute Icon" />
+    <h1>you deserve all the love in the world today and always. <span class="highlight">
+        happy birthday axel xavier</span></h1>
+    <p> 
+      tolong hidup dengan baik yaaa sayangkuuuu. </p>
+    <button class="button" onclick="goToPage(4)">tap ‹𝟹</button>
+  </div>
+
+  <div class="page" id="page4">
+    <img src="3.gif" alt="Envelope" />
+    <h1>every year, you grow wiser, kinder, and even more amazing.  <span class="highlight">
+        happy birthday my boyy</span></h1>
+    <button class="button" onclick="goToPage(5)">tap ‹𝟹</button>
+  </div>
+
+<div class="page" id="page5">
+    <img src="4.gif" alt="Cute Icon" />
+    <h1>my life became so much better ever since you became <span class="highlight"> apart of it</span></h1>
+    <p> 
+      i'll never let you go. i promise</p>
+    <button class="button" onclick="goToPage(6)">tap ‹𝟹</button>
+  </div>
+
+<div class="page" id="page6" style="font-family: 'Dancing Script', cursive;">
+    <h2>Happy birthday my lovee!!! <𝟑 .ᐟ </h2>
+    <div class="letter" id="letterText"></div>
+</div>
+
+  <audio id="bg-music" src="Party.mp3" autoplay loop muted></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const fullLetter = `selamat ulang tahun sayangku, cintakuuu 💙
+
+it's your special day, wish you all the best sayang. 
+whatever u ask may u receive, whatever u seek may u find, 
+whatever u wish may it be fulfilled on your birthday and together. 
+sampaikan pesanku untuk mamamu, 
+terimakasih sudah lahirkan anak hebat ini ke dunia, 
+terimakasih pada kedua orang tua kamu karena sudah 
+merawat dan menjagamu sampai bisa jadi orang sebaik ini. 
+tetap jadi orang baik ya? jaga dan tuntun adik-adik kamu
+sampe bisa jadi manusia hebat seperti kamu.
+i hope u will walk on this journey knowing
+that u belong, i hope even if things sometime do not go 
+your way u will stop trying, u will not give up on yourself 
+and your thoughest days. i hope you will reminding yourself 
+on this word 
+"kamu layak untuk dicintai dan dirayakan dalam hal apapun"
+jangan ngerasa sendiri ya sayang, kalo kamu butuh cerita aku disiniiii,
+akus elalu disini buat kamu. semoga jalanmu dipermudah ya sayang, 
+teruslah melangkah dan berbahagiaaa. aku akan selalu bangga atas 
+semua proses yang sedang kamu laluiii anak hebaattt, selamat berkelanaaa.
+i will always support youu!!!
+
+from: your princess `;
+
+    function goToPage(pageNum) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+      const next = document.getElementById(`page${pageNum}`);
+      next.classList.add('active');
+
+      if (pageNum === 3) {
+        const music = document.getElementById("bg-music");
+        music.muted = false;
+        music.play().catch(e => console.log("Autoplay blocked:", e));
+
+        confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+        typeText(fullLetter, document.getElementById('letterText'), 25);
+        startFallingSymbols();
+      }
+    }
+
+    function typeText(text, element, speed) {
+      element.innerHTML = '';
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+
+    function startFallingSymbols() {
+      setInterval(() => {
+        const el = document.createElement('div');
+        el.classList.add('falling');
+        const isHeart = Math.random() < 0.5;
+        el.innerText = isHeart ? '💙' : '⭐';
+        el.classList.add(isHeart ? 'blue-heart' : 'yellow-star');
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 6000);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
